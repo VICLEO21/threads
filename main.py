@@ -79,20 +79,27 @@ print ("Usando 4 hilos")
 print ("") 
 
 
-globalArrayNum = []
+globalArrayNum4 = []
 def contador4hilos (inicio,fin):
     for i in range (inicio, fin+1, 1):
-        globalArrayNum.append (i)
+        globalArrayNum4.append (i)
         time.sleep (0.02)
-    return globalArrayNum
+    return globalArrayNum4
 
 t0 = time.time ()
 listaHilos = []
 
-for i in range (4):
-    t =  threading.Thread (target=contador4hilos, args=(1,100//4))
-    listaHilos.append (t)
-    t.start ()
+
+for i in range (1,4,1):
+        j = 100//i
+        t =  threading.Thread (target=contador4hilos, args=(1,j))
+        listaHilos.append (t)
+        t.start ()
+        
+
+       
+for t in listaHilos:
+    t.join()
 
 #t = threading.Thread(target=contador4hilos, args=(1,24))
 #listaHilos.append(t)
@@ -110,10 +117,9 @@ for i in range (4):
 #listaHilos.append(t)
 #t.start ()
 
-for t in listaHilos:
-    t.join()
 
-TiempoFinal = time.time() - t0
-print (f'Tiempo total de ejecución: {TiempoFinal}')
-globalArrayNum.sort()
-print (globalArrayNum)
+#Tiempo
+#TiempoFinal = time.time() - t0
+#print (f'Tiempo total de ejecución: {TiempoFinal}')
+globalArrayNum4.sort()
+print (globalArrayNum4)
