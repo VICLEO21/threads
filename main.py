@@ -90,9 +90,9 @@ t0 = time.time ()
 listaHilos = []
 
 
-for i in range (1,4,1):
+for i in range (1,101,25):
         j = 100//i
-        t =  threading.Thread (target=contador4hilos, args=(1,j))
+        t =  threading.Thread (target=contador4hilos, args=(i,i +25 if i + 25 <= 100  else 100))
         listaHilos.append (t)
         t.start ()
         
